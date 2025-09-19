@@ -21,6 +21,3 @@ def field_to_index(field):
     column = ord(field[0])-ord("a")
     row = 8 - int(field[1])
     return row, column
-
-gamemap = create_map()
-print_map(gamemap)
