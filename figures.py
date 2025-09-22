@@ -40,3 +40,19 @@ def rook(map, start, goal):
                 return False
         return True
     return False
+
+def king(map, start, goal):
+    s_c, s_r = start
+    g_c, g_r = goal
+    goal_field = map[g_c][g_r]
+
+    # horizontal
+    if s_c == g_c and goal_field == ".":
+        if abs(s_r - g_r) == 1:
+            return True
+    # vertical
+    if s_r == g_r and goal_field == ".":
+        if abs(s_c - g_c) == 1:
+            return True
+    # hit
+    return False
