@@ -1,11 +1,11 @@
 from figures import pawn, knight, bishop, rook, king, queen
 def is_valid_move(map, start, goal, figure):
-    s_c, s_r = start
-    g_c, g_r = goal
-    goal_field = map[g_r][g_c]  # Korrigiert: erst Reihe, dann Spalte
+    s_r, s_c = start  # start = (row, column)
+    g_r, g_c = goal   # goal = (row, column)
+    goal_field = map[g_r][g_c]
 
     # Überprüfe, ob das Ziel innerhalb des Spielfelds liegt
-    if not (0 <= g_c < 8 and 0 <= g_r < 8):
+    if not (0 <= g_r < 8 and 0 <= g_c < 8):
         return False
 
     # Überprüfe, ob die Figur am Startfeld existiert
@@ -31,3 +31,11 @@ def is_valid_move(map, start, goal, figure):
         return king(map, start, goal)
 
     return False
+
+def make_move(map, start, goal):
+    s_r, s_c = start  # start = (row, column)
+    g_r, g_c = goal   # goal = (row, column)
+    figure = map[s_r][s_c]
+    map[g_r][g_c] = figure
+    map[s_r][s_c] = "."
+    return map
